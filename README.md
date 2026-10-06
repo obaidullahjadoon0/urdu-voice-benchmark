@@ -15,13 +15,20 @@ speakers mix in English words. This project:
 4. Wraps it in a live voice demo
 
 ## Baseline results (Phase 1)
-Evaluated on 200 clips from the Google FLEURS Urdu test set.
+Evaluated on 200 clips from the Google FLEURS Urdu test set (clean, read-aloud speech).
 
-| Model | WER | CER |
-|---|---|---|
-| whisper-small | 36.6% | 13.8% |
-| whisper-medium | TBD | TBD |
-| whisper-large-v3 | TBD | TBD |
+| Model | WER | CER | Run time (200 clips, T4 GPU) |
+|---|---|---|---|
+| whisper-small | 36.6% | 13.8% | n/a |
+| whisper-medium | 27.3% | 9.6% | 528 s |
+| whisper-large-v3 | 21.0% | 7.5% | 790 s |
+
+WER = word error rate, CER = character error rate (lower is better).
+Text was normalized by removing punctuation and lowercasing.
+
+**Key finding:** error rates fall sharply with model size, but even
+large-v3 still fails on names, English-origin words, and number values
+(for example, a bus number "403" was transcribed as "430").
 
 WER = word error rate, CER = character error rate (lower is better).
 Text was normalized by removing punctuation and lowercasing.
